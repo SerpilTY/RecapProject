@@ -12,21 +12,48 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var item in carManager.GetAll()) 
-            {
-                Console.WriteLine("Car's Description: "+ item.Description);
-            }
+            CarTest();
 
-            foreach (var item in carManager.GetAllByBrandId(2))
-            {
-                Console.WriteLine("Car with selected Brand Id: " + item.BrandId +", Car's Brand: "+ item.Description);
-            }
+            //BrandTest();
 
-            foreach (var item in carManager.GetAllByColorId(3))
+            //ColorTest();
+        }
+
+        private static void ColorTest()
+        {
+            ColorManager colorManager = new ColorManager(new EfColorDal());
+
+            foreach (var color in colorManager.GetAll())
             {
-                Console.WriteLine("Car with selected Color Id: " + item.ColorId + ", Car's Brand: " + item.Description);
+                Console.WriteLine(color.Name);
             }
         }
+
+        private static void BrandTest()
+        {
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+
+            foreach (var brand in brandManager.GetAll())
+            {
+                Console.WriteLine(brand.Name);
+            }
+        }
+
+        private static void CarTest()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+            foreach (var item in carManager.GetCarDetails())
+            {
+                Console.WriteLine(
+                           "Car's Description: " + item.CarName+" \n"+
+                           "Car's Brand Name: " + item.BrandName + " \n" +
+                           "Car's Color: " + item.ColorName + " \n" +
+                           "Car's Daily Price: " + item.DailyPrice +" \n"+
+                           "******************************************"
+                    );
+            }
+          
+        }
+            
     }
 }

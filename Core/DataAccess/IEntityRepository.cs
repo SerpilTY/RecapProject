@@ -1,11 +1,12 @@
-﻿using Entities.Abstract;
+﻿using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace DataAccess.Abstract
-{
+namespace Core.DataAccess
+{   
+    //Core katmanı başka hiçbir katmanı referans almaz.
     //add generic constraint to IEntityRepository
     //T class:may only be a referance type
     //T IEntity: may only be an entity from IEntity Absract
