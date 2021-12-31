@@ -18,6 +18,22 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
+        public void Add(Car car)
+        {
+            if(car.Description.Length>=2 && car.DailyPrice!=0)
+
+            _carDal.Add(car);
+            else
+            {
+                Console.WriteLine(car.Description+" not providing requirements for adding.");
+            }
+        }
+
+        public void Delete(Car car)
+        {
+            _carDal.Delete(car);
+        }
+
         public List<Car> GetAll()
         {
             return _carDal.GetAll();
@@ -36,6 +52,11 @@ namespace Business.Concrete
         public List<CarDetailDto> GetCarDetails()
         {
             return _carDal.GetCarDetails();
+        }
+
+        public void Update(Car car)
+        {
+            _carDal.Update(car);
         }
     }
 }

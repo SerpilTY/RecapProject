@@ -1,6 +1,6 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
-using DataAccess.Concrete.InMemory;
+using Entities.Concrete;
 using System;
 
 namespace ConsoleUI
@@ -17,6 +17,33 @@ namespace ConsoleUI
             //BrandTest();
 
             //ColorTest();
+        }
+
+        private static void CarTest()
+        {
+            Car myCar = new Car { 
+            BrandId=2,
+            ColorId=3,
+            ModelYear="2009",
+            DailyPrice=198000,
+            Description="Mercedes A Series"
+            };
+
+            CarManager carManager = new CarManager(new EfCarDal());
+
+            carManager.Add(myCar);
+
+            foreach (var item in carManager.GetCarDetails())
+            {
+                Console.WriteLine(
+                           "Car's Description: " + item.CarName + " \n" +
+                           "Car's Brand Name: " + item.BrandName + " \n" +
+                           "Car's Color: " + item.ColorName + " \n" +
+                           "Car's Daily Price: " + item.DailyPrice + " \n" +
+                           "******************************************"
+                    );
+            }
+
         }
 
         private static void ColorTest()
@@ -39,21 +66,7 @@ namespace ConsoleUI
             }
         }
 
-        private static void CarTest()
-        {
-            CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var item in carManager.GetCarDetails())
-            {
-                Console.WriteLine(
-                           "Car's Description: " + item.CarName+" \n"+
-                           "Car's Brand Name: " + item.BrandName + " \n" +
-                           "Car's Color: " + item.ColorName + " \n" +
-                           "Car's Daily Price: " + item.DailyPrice +" \n"+
-                           "******************************************"
-                    );
-            }
-          
-        }
+       
             
     }
 }
