@@ -22,7 +22,7 @@ namespace ConsoleUI
         private static void CarTest()
         {
             Car myCar = new Car { 
-            BrandId=2,
+            BrandId=4,
             ColorId=3,
             ModelYear="2009",
             DailyPrice=198000,
