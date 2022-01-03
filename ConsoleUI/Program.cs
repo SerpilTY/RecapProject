@@ -5,8 +5,8 @@ using System;
 
 namespace ConsoleUI
 
-    //SOLID
-    //O: Open Closed Principle
+//SOLID
+//O: Open Closed Principle
 {
     class Program
     {
@@ -21,27 +21,37 @@ namespace ConsoleUI
 
         private static void CarTest()
         {
-            Car myCar = new Car { 
-            BrandId=4,
-            ColorId=3,
-            ModelYear="2009",
-            DailyPrice=198000,
-            Description="Mercedes A Series"
+            Car myCar = new Car
+            {
+                BrandId = 4,
+                ColorId = 3,
+                ModelYear = "2009",
+                DailyPrice = 198000,
+                Description = "Mercedes A Series"
             };
 
             CarManager carManager = new CarManager(new EfCarDal());
 
-            carManager.Add(myCar);
+            //carManager.Add(myCar);   //..Commented because always adding and adding..
 
-            foreach (var item in carManager.GetCarDetails())
+            var result = carManager.GetCarDetails();
+
+            if (result.Success)
             {
-                Console.WriteLine(
-                           "Car's Description: " + item.CarName + " \n" +
-                           "Car's Brand Name: " + item.BrandName + " \n" +
-                           "Car's Color: " + item.ColorName + " \n" +
-                           "Car's Daily Price: " + item.DailyPrice + " \n" +
-                           "******************************************"
-                    );
+                foreach (var item in result.Data)
+                {
+                    Console.WriteLine(
+                               "Car's Description: " + item.CarName + " \n" +
+                               "Car's Brand Name: " + item.BrandName + " \n" +
+                               "Car's Color: " + item.ColorName + " \n" +
+                               "Car's Daily Price: " + item.DailyPrice + " \n" +
+                               "******************************************"
+                        );
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
             }
 
         }
@@ -50,7 +60,7 @@ namespace ConsoleUI
         {
             ColorManager colorManager = new ColorManager(new EfColorDal());
 
-            foreach (var color in colorManager.GetAll())
+            foreach (var color in colorManager.GetAll().Data)
             {
                 Console.WriteLine(color.Name);
             }
@@ -60,13 +70,10 @@ namespace ConsoleUI
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
 
-            foreach (var brand in brandManager.GetAll())
+            foreach (var brand in brandManager.GetAll().Data)
             {
                 Console.WriteLine(brand.Name);
             }
         }
-
-       
-            
     }
 }
