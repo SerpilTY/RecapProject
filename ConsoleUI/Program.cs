@@ -12,12 +12,34 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarTest();
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+
+             customerManager.Add(new Customer {
+             CompanyName="North Star Inc."
+             });
+            
+
+            UserManager userManager = new UserManager(new EfUserDal());
+            userManager.Add(new User
+            {
+                Email = "asd@asd<com",
+                FirstName = "Serpil",
+                LastName="TY",
+                Password="1234",
+                UserId=1
+                
+            }) ; 
+            
+
+
+            // CarTest();
 
             //BrandTest();
 
             //ColorTest();
         }
+    
+
 
         private static void CarTest()
         {
