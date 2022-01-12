@@ -22,7 +22,7 @@ namespace ConsoleUI
             UserManager userManager = new UserManager(new EfUserDal());
             userManager.Add(new User
             {
-                Email = "asd@asd<com",
+                Email = "asd@asd.com",
                 FirstName = "Serpil",
                 LastName="TY",
                 Password="1234",

@@ -34,6 +34,7 @@ namespace Business.Concrete
 
                 return new ErrorResult(Messages.ProductNameInvalid);
             }
+         
         }
 
         public IResult Delete(Car car)
@@ -44,7 +45,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
-            if (DateTime.Now.Hour == 23)
+            if (DateTime.Now.Hour == 17)
                 return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
 
             return new DataResult<List<Car>>(_carDal.GetAll(), true, Messages.ProductsListed);

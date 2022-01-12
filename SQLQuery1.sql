@@ -13,8 +13,8 @@ CREATE TABLE [dbo].[Cars] (
     [DailyPrice]  DECIMAL (18)  NOT NULL,
     [Description] VARCHAR (300) NOT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC),
-    FOREIGN KEY ([BrandId]) REFERENCES [dbo].[Brands] ([Id]),
-    FOREIGN KEY ([ColorId]) REFERENCES [dbo].[Colors] ([Id])
+    FOREIGN KEY (BrandId) REFERENCES Brands(Id),
+    FOREIGN KEY (ColorId) REFERENCES Colors(Id)
 );
 GO
 
@@ -34,7 +34,7 @@ CREATE TABLE [dbo].[Users]
 	[LastName] nvarchar(25) NOT NULL,
 	[Email] nvarchar(25) NOT NULL,
 	[Password] nvarchar(25) NOT NULL,
-	[UserId] INT NOT NULL,
+	[CustomerId] INT NOT NULL,
 	FOREIGN KEY ([CustomerId]) REFERENCES  [dbo].[Customers] ([UserId])
 		 
 	)
@@ -62,3 +62,18 @@ CREATE TABLE [dbo].[Rentals]
 	FOREIGN KEY ([CarId]) REFERENCES  [dbo].[Cars] ([Id])
 		 
 	)
+	GO
+
+INSERT INTO Cars(BrandId, ColorId,ModelYear,DailyPrice,Description) 
+VALUES( 1,1,'2007',90000,'Opel Corsa'),
+(2,2,'2017',900000,'Volvo S60'),
+(3,3,'2022',560000,'Audi A3 SP'),
+(4,4,'2009',2190000,'Mercedes AMG G63')
+
+GO
+ 
+ INSERT INTO Colors Values('Mustard'),('White'),('Black'),('Green')
+
+ GO
+
+ Insert Into Brands Values('Opel'),('Volvo'),('Audi'),('Mercedes')
