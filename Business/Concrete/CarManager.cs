@@ -18,15 +18,17 @@ namespace Business.Concrete
     public class CarManager : ICarService
     {
         ICarDal _carDal;
+        //ICarImageService _carImageService;
 
         public CarManager(ICarDal carDal)
         {
             _carDal = carDal;
+            //_carImageService = carImageService;
         }
+
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
-
 
             _carDal.Add(car);
 
