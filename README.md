@@ -1,7 +1,7 @@
-# RecapProject
-Car Rental Project by Kodlama.io/                 Engin Demiroğ
+# Car Rental Project by Kodlama.io/                 Engin Demiroğ
 
-Merhaba, Araba Kiralama Projeme Hoşgeldin..
+# Merhaba, Araba Kiralama Projeme Hoşgeldin..
+
 Proje SOLID, Kurumsal Yazılım Mimari, AOP ve Yazılım Geliştirme Prensiplerine uygun geliştirildi.
 .Net Core 3.1 platformu ile geliştirildi.
 
