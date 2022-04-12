@@ -19,7 +19,7 @@ namespace ConsoleUI
              });
             
 
-            UserManager userManager = new UserManager(new EfUserDal());
+           /* UserManager userManager = new UserManager(new EfUserDal());
             userManager.Add(new User
             {
                 Email = "asd@asd.com",
@@ -29,7 +29,7 @@ namespace ConsoleUI
                 UserId=1
                 
             }) ; 
-            
+            */
 
 
             // CarTest();

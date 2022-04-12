@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -57,6 +58,7 @@ namespace Business.Concrete
 
 
         [ValidationAspect(typeof(CarImageValidator))]
+        [SecuredOperation("image.add,admin")]
         public IResult Delete(CarImage carImage)
         {
             var oldpath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\wwwroot")) + _carImageDal.Get(p => p.Id == carImage.Id).ImagePath;
@@ -131,8 +133,5 @@ namespace Business.Concrete
 
             return new SuccessResult();
         }
-
-        
-
     }
 }
