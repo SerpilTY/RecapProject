@@ -1,10 +1,22 @@
-﻿use ReCapDb;
+use ReCapDb;
 
 CREATE TABLE [dbo].[Brands] (
     [Id]   INT           IDENTITY (1, 1) NOT NULL,
     [Name] VARCHAR (50) NOT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
+GO
+
+CREATE TABLE [dbo].[CarImages]
+(
+	[Id] INT IDENTITY(1,1) NOT NULL,
+	[CarId] INT NOT NULL,
+	[ImagePath] varchar(250) NOT NULL,
+	[Date] dateTime NOT NULL,
+	FOREIGN KEY ([CarId]) REFERENCES  [dbo].[Cars] ([Id]),
+	PRIMARY KEY CLUSTERED ([Id] ASC)	 
+	)
+
 GO
 
 CREATE TABLE [dbo].[Cars] (
@@ -26,23 +38,7 @@ CREATE TABLE [dbo].[Colors] (
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
-
 GO
-
-CREATE TABLE [dbo].[Users]
-(
-[Id] INT NOT NULL  IDENTITY(1,1),
-[FirstName] VARCHAR (50) NOT NULL,
-[LastName]  VARCHAR (50) NOT NULL,
-[Email]     VARCHAR (50) NOT NULL,
-[PasswordHash]  BINARY(500) NOT NULL,
-[PasswordSalt] BINARY(500) NOT NULL, 
-[Status] BIT NOT NULL, 
-PRIMARY KEY CLUSTERED ([Id] ASC)
-    
-);
-
-	GO
 
 CREATE TABLE [dbo].[Customers]
 (
@@ -53,6 +49,7 @@ FOREIGN KEY ([UserId]) REFERENCES [dbo].[Users] ([Id])
 PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
+
 GO
 
 CREATE TABLE [dbo].[OperationClaims] (
@@ -60,7 +57,6 @@ CREATE TABLE [dbo].[OperationClaims] (
     [Name] VARCHAR (250) NOT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
-
 
 GO
 
@@ -75,6 +71,7 @@ CREATE TABLE [dbo].[Rentals]
 	FOREIGN KEY ([CarId]) REFERENCES  [dbo].[Cars] ([Id]),
 	PRIMARY KEY CLUSTERED ([Id] ASC)	 
 	);
+
 GO
 
 CREATE TABLE [dbo].[UserOperationClaims] (
@@ -86,15 +83,20 @@ CREATE TABLE [dbo].[UserOperationClaims] (
 
 GO
 
-CREATE TABLE [dbo].[CarImages]
+CREATE TABLE [dbo].[Users]
 (
-	[Id] INT IDENTITY(1,1) NOT NULL,
-	[CarId] INT NOT NULL,
-	[ImagePath] varchar(250) NOT NULL,
-	[Date] dateTime NOT NULL,
-	FOREIGN KEY ([CarId]) REFERENCES  [dbo].[Cars] ([Id]),
-	PRIMARY KEY CLUSTERED ([Id] ASC)	 
-	)
+[Id] INT NOT NULL  IDENTITY(1,1),
+[FirstName] VARCHAR (50) NOT NULL,
+[LastName]  VARCHAR (50) NOT NULL,
+[Email]     VARCHAR (50) NOT NULL,
+[PasswordHash]  VARBINARY(500) NOT NULL,
+[PasswordSalt] VARBINARY(500) NOT NULL, 
+[Status] BIT NOT NULL, 
+PRIMARY KEY CLUSTERED ([Id] ASC)
+    
+);
+
+
 
  INSERT INTO CarImages (CarId,ImagePath,Date) 
  Values(2,'www.audi.com/images','20120618 10:34:09 AM')
@@ -108,3 +110,4 @@ VALUES( 1,1,'2007',90000,'Opel Corsa'),
  INSERT INTO Colors Values('Mustard'),('White'),('Black'),('Green')
 
  Insert Into Brands Values('Opel'),('Volvo'),('Audi'),('Mercedes')
+
