@@ -63,7 +63,7 @@ namespace ConsoleUI
                 foreach (var item in result.Data)
                 {
                     Console.WriteLine(
-                               "Car's Description: " + item.CarName + " \n" +
+                               "Car's Description: " + item.ModelName + " \n" +
                                "Car's Brand Name: " + item.BrandName + " \n" +
                                "Car's Color: " + item.ColorName + " \n" +
                                "Car's Daily Price: " + item.DailyPrice + " \n" +
@@ -84,7 +84,7 @@ namespace ConsoleUI
 
             foreach (var color in colorManager.GetAll().Data)
             {
-                Console.WriteLine(color.Name);
+                Console.WriteLine(color.ColorName);
             }
         }
 
@@ -94,7 +94,7 @@ namespace ConsoleUI
 
             foreach (var brand in brandManager.GetAll().Data)
             {
-                Console.WriteLine(brand.Name);
+                Console.WriteLine(brand.BrandName);
             }
         }
     }

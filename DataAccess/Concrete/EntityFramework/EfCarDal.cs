@@ -16,27 +16,35 @@ namespace DataAccess.Concrete.EntityFramework
 
     {
         //IDisposable pattern implementation of C#
-        public List<CarDetailDto> GetCarDetails()
+
+        public List<CarDetailDto> GetCarDto(Expression<Func<CarDetailDto, bool>> filter = null)
         {
-            using (ReCapContext context=new ReCapContext())
+            using (ReCapContext context = new ReCapContext())
             {
                 var result = from c in context.Cars
                              join b in context.Brands
-                             on c.BrandId equals b.Id
-                             join r in context.Colors
-                             on c.ColorId equals r.Id
+                                 on c.BrandId equals b.BrandId
+
+                             join col in context.Colors
+                                 on c.ColorId equals col.ColorId
+
                              select new CarDetailDto
                              {
-                                 // CarName, BrandName, ColorName, DailyPrice
-                                 CarName = c.Description,
-                                 BrandName = b.Name,
-                                 ColorName = r.Name,
-                                 DailyPrice = c.DailyPrice
+                                 CarId = c.CarId,
+                                 ModelName = c.ModelName,
+                                 ColorName = col.ColorName,
+                                 BrandId = c.BrandId,
+                                 ColorId = c.ColorId,
+                                 BrandName = b.BrandName,
+                                 DailyPrice = c.DailyPrice,
+                                 ModelYear = c.ModelYear,
+                                 Description = c.Description,
+                                 ImagePath = (from m in context.CarImages 
+                                              where m.CarId == c.CarId select m.ImagePath).ToList(),
                              };
+                return filter is null ? result.ToList() : result.Where(filter).ToList(); 
 
-                return result.ToList();
             }
-
         }
     }
 }

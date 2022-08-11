@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
@@ -23,6 +24,8 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
+            //Thread.Sleep(5000);
+
             var result = _brandService.GetAll();
             if (result.Success)
             {
@@ -33,9 +36,9 @@ namespace WebAPI.Controllers
 
         [HttpGet("getbyid")]
 
-        public IActionResult GetById(int Id)
+        public IActionResult GetById(int BrandId)
         {
-            var result = _brandService.GetById(Id);
+            var result = _brandService.GetById(BrandId);
             if (result.Success)
             {
                 return Ok(result);

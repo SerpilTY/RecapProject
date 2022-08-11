@@ -22,28 +22,8 @@ namespace WebAPI.Controllers
         {
             _carService = carService;
         }
-
-        [HttpGet("getall")]
-        public IActionResult GetAll()
-        {            
-            var result = _carService.GetAll();
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-    }
-        [HttpGet("getbyid")]
-        public IActionResult GetById(int id)
-        {
-            var result = _carService.GetById(id);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-
+ 
+      
 
         [HttpPost("add")]
         public IActionResult Add(Car car)
@@ -78,5 +58,64 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+       
+
+        [HttpGet("getcardetails")]
+        public IActionResult GetCarDetails()
+        {
+            var result = _carService.GetCarDetails();
+            if (result.Success)
+            {
+                return Ok(result);
+
+            }
+            return BadRequest(result);
+
+        }
+        [HttpGet("getbybrandId")]
+        public IActionResult GetByBrandId(int brandId)
+        {
+            var result = _carService.GetCarDetailsByBrandId(brandId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
+        [HttpGet("getbycolorId")]
+        public IActionResult GetByColorId(int colorId)
+        {
+            var result = _carService.GetCarDetailsByColorId(colorId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
+
+        [HttpGet("getCardetailsByCarId")]
+        public IActionResult GetCarDetailsByCarId(int carId)
+        {
+            var result = _carService.GetCarDetailsByCarId(carId);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+
+        }
+        [HttpGet("getCarDetailsByColorAndByBrand")]
+        public IActionResult GetCarDetailsByColorAndByBrand(int colorId, int brandId)
+        {
+
+            var result = _carService.GetCarDetailsByColorAndByBrand(colorId, brandId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+
+        }
     } 
 }

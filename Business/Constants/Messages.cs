@@ -52,5 +52,6 @@ namespace Business.Constants
         public static string SuccessfulLogin = "SuccessfulLogin";
 
         public static string CarUpdated= "Car Updated Succesfully";
+        public static string SuccesfullyGotDetails = "Successfully Got Details";
     }
 }
