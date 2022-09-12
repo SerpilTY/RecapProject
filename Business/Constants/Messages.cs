@@ -53,5 +53,9 @@ namespace Business.Constants
 
         public static string CarUpdated= "Car Updated Succesfully";
         public static string SuccesfullyGotDetails = "Successfully Got Details";
+        public static string CardUpdated= "Card Updated";
+        public static string CardDeleted= "Card Deleted";
+        public static string CardAdded= "Card Added";
+        public static string CardListed= "Card Listed";
     }
 }
