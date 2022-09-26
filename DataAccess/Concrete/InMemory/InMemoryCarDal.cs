@@ -30,6 +30,11 @@ namespace DataAccess.Concrete.InMemory
             _cars.Add(Car);
         }
 
+        public bool Any(Expression<Func<Car, bool>> exp)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(Car car)
         {
             
