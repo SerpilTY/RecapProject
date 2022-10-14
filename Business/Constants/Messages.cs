@@ -57,5 +57,9 @@ namespace Business.Constants
         public static string CardDeleted= "Card Deleted";
         public static string CardAdded= "Card Added";
         public static string CardListed= "Card Listed";
+
+        public static string FindeksPointNotEnough = "Not Enough Findeks Point";
+        internal static string NotAvailable;
+        internal static string Added;
     }
 }
