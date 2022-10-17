@@ -59,7 +59,8 @@ namespace Business.Constants
         public static string CardListed= "Card Listed";
 
         public static string FindeksPointNotEnough = "Not Enough Findeks Point";
-        internal static string NotAvailable;
-        internal static string Added;
+        public static string NotAvailable = "Not Available";
+        public static string Added = "Added";
+
     }
 }
